@@ -1,29 +1,33 @@
-import React,{useEffect, useState} from "react";
-import List from "./List";
+import React, { useEffect, useState } from "react";
+import Formulario from "./Formulario";
+import AllToDo from "./AllToDo";
 
 
 
-//create your first component
 const Home = () => {
-	const [taskList, setTaskList]=useState([]);
-	const [showList,setShowList]= useState(false)
 
-useEffect(()=>{
-if(taskList.length>0) return setShowList(true)
-	return setShowList(false)
+	const [nameList, setNameList] = useState([]);
+	const [showAllToDo, setShowAllToDo] = useState([false]);
 
-},[taskList])
+
+
+	useEffect(() => {
+		if (nameList.length > 0) return setShowAllToDo(true);
+		return setShowAllToDo(false)
+	}, [nameList]
+	)
 
 
 	return (
 		<div className="text-center">
 
-			<form List={taskList} updateList={setTaskList}></>
-            
+			<Formulario list={nameList} updateList={setNameList} />
 
+			{showAllToDo && <AllToDo task={nameList} updateList={setNameList}/>}
 
 		</div>
 	);
-};
+
+}
 
 export default Home;
