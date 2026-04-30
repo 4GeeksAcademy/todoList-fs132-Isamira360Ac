@@ -10,19 +10,21 @@ const AllToDo = ({ task, updateList }) => {
     }
 
     return (
-        <ul>
+        <div className="container wrapp-list">
+
+        <ul className="list-group">
             {task.map((el, i) => (
-                <li
-                    key={i}
-                    onMouseEnter={() => setHoverIndex(i)}
-                    onMouseLeave={() => setHoverIndex(null)}
+                <li className="list-group-item d-flex justify-content-between"
+                key={i}
+                onMouseEnter={() => setHoverIndex(i)}
+                onMouseLeave={() => setHoverIndex(null)}
                 >
                     {el}
 
                     {hoverIndex === i && (
-                        <span
-                            onClick={() => deleteTask(i)}
-                            style={{ marginLeft: "10px", cursor: "pointer" }}
+                        <span className=""
+                        onClick={() => deleteTask(i)}
+                        style={{ marginLeft: "10px", cursor: "pointer" }}
                         >
                             ❌
                         </span>
@@ -30,6 +32,7 @@ const AllToDo = ({ task, updateList }) => {
                 </li>
             ))}
         </ul>
+            </div>
     )
 }
 

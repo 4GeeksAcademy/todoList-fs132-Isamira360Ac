@@ -12,20 +12,27 @@ const Formulario = ({list, updateList }) => {
     }
 
     const handleSubmit = e => {
-        e.preventDefault()
-        console.log("evento submit")
-        updateList([...list,toDo])
-        setToDo('')
+    e.preventDefault()
 
-    }
+    if (toDo.trim() === '') return;
+
+    updateList([...list, toDo])
+    setToDo('')
+}
 
     return (
 
-        <form onSubmit={handleSubmit}>
+            <div> 
+
+                <h1 className="container">Cosas por hacer</h1>
+
+        <form className="list-group" onSubmit={handleSubmit}>
 
             <input type="text" value={toDo} onChange={handleChange} />
             <input type="submit" hidden/>
+            
         </form>
+            </div>
 
 
     )
