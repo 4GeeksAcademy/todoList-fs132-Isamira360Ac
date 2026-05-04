@@ -1,10 +1,12 @@
-import { useState} from "react";
-import { unstable_renderSubtreeIntoContainer } from "react-dom";
-const Formulario = ({list, updateList }) => {
+import { useState } from "react";
+
+
+
+const Formulario = ({ list, updateList }) => {
 
     const [toDo, setToDo] = useState('');
- console.log(list)
-   
+    console.log(list)
+
 
     const handleChange = e => {
 
@@ -12,31 +14,38 @@ const Formulario = ({list, updateList }) => {
     }
 
     const handleSubmit = e => {
-    e.preventDefault()
 
-    if (toDo.trim() === '') return;
+        e.preventDefault()
 
-    updateList([...list, toDo])
-    setToDo('')
-}
+
+        if (toDo.trim() === '') return;
+
+        updateList([...list, toDo])
+        setToDo('')
+    }
 
     return (
 
-            <div> 
+        <div className="list-group bg-success">
 
-                <h1 className="container">Cosas por hacer</h1>
+            <h1>ToDos</h1>
+            <form onSubmit={handleSubmit}>
 
-        <form className="list-group" onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    className="form-control list-group-item"
+                    value={toDo}
+                    onChange={handleChange}
+                    placeholder="What do you need to do?"
+                />
 
-            <input type="text" value={toDo} onChange={handleChange} />
-            <input type="submit" hidden/>
-            
-        </form>
-            </div>
+                <input type="submit" hidden />
+                
+            </form>
+        </div>
 
+    );
 
-    )
 }
-
 export default Formulario;
 

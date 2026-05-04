@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 const AllToDo = ({ task, updateList }) => {
 
     const [hoverIndex, setHoverIndex] = useState(null);
@@ -10,11 +11,12 @@ const AllToDo = ({ task, updateList }) => {
     }
 
     return (
-        <div className="container wrapp-list">
+        <div className= " ">
 
         <ul className="list-group">
+          
             {task.map((el, i) => (
-                <li className="list-group-item d-flex justify-content-between"
+                <li className="list-group-item d-flex justify-content-between "
                 key={i}
                 onMouseEnter={() => setHoverIndex(i)}
                 onMouseLeave={() => setHoverIndex(null)}
@@ -26,12 +28,17 @@ const AllToDo = ({ task, updateList }) => {
                         onClick={() => deleteTask(i)}
                         style={{ marginLeft: "10px", cursor: "pointer" }}
                         >
-                            ❌
+                            <i class="fa-solid fa-xmark"></i>
                         </span>
-                    )}
+
+                                           )}
                 </li>
+
+                
             ))}
         </ul>
+
+        <p className="text-end counter"> {task.length} Task left </p>
             </div>
     )
 }

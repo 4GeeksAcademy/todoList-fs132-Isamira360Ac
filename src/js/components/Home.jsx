@@ -19,13 +19,23 @@ const Home = () => {
 
 
 	return (
-		<div className="text-center">
 
-			<Formulario list={nameList} updateList={setNameList} />
+  <div className="row justify-content-center py-3 py-md-5">
+    <div className="col-12 col-md-10 col-lg-6">
 
-			{showAllToDo && <AllToDo task={nameList} updateList={setNameList}/>}
+      <div className="wrapper wrapp-list p-3 p-md-5">
 
-		</div>
+        <Formulario list={nameList} updateList={setNameList} />
+
+        {showAllToDo && (
+          <AllToDo task={nameList} updateList={setNameList} />
+        )}
+
+      </div>
+
+    </div>
+  </div>
+//</div>
 	);
 
 }
